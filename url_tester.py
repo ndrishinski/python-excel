@@ -28,12 +28,11 @@ for cell in source_ws['A']:
     # Make the API request
     with urllib.request.urlopen(f'', timeout=None) as response:
         data = json.loads(response.read().decode())
-    
 
     # Write the data to the destination worksheet
     dest_ws.append([item])
-    if 'admants' in data:
-        for segment in data['admants']:
+    if 'seg' in data:
+        for segment in data['seg']:
 
             dest_ws.append([' ', segment['name']])
     else:
